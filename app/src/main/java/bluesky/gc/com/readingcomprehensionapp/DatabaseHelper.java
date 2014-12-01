@@ -5,9 +5,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.text.DateFormat;
-import java.util.Date;
-
 public class DatabaseHelper extends SQLiteOpenHelper
 {
     private static DatabaseHelper mInstance = null;
@@ -17,6 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public static final String SOUND = "db";
     public static final String TABLE = "data";
     public static final String ID = "_id";
+    public static final String DATABASE_NAME = "db";
     public static final String DATABASE_VERSION = "1";
 
     public static DatabaseHelper getInstance(Context ctx)
@@ -48,17 +46,17 @@ public class DatabaseHelper extends SQLiteOpenHelper
     {
         ContentValues cv = new ContentValues();
 
-        cv.put(DATE, DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM).format(new Date()));
-        cv.put(NUMBER_CORRECT, numberCorrect);
-        cv.put(NUMBER_INCORRECT, numberIncorrect);
-        getWritableDatabase().insert(TABLE, DATE, cv);
+        cv.put(WORD, "Dog");
+        cv.put(IMAGE, "DogImage");
+        cv.put(SOUND, "DogWordSpoken");
+        getWritableDatabase().insert(TABLE, WORD, cv);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
         android.util.Log.w("Constants", "Upgrading database, which will destroy all old data");
-        db.execSQL("DROP TABLE IF EXISTS constants");
+        db.execSQL("DROP TABLE IF EXISTS data");
         onCreate(getWritableDatabase());
     }
 }
