@@ -30,31 +30,14 @@ public class DatabaseHelper extends SQLiteOpenHelper
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db)
+    public void onCreate(SQLiteDatabase sqLiteDatabase)
     {
-        android.util.Log.i("onCreate", "Creating Database");
 
-        db.execSQL("CREATE TABLE " + TABLE
-                + " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + WORD
-                + " TEXT, " + IMAGE + " INTEGER, " + SOUND
-                + " INTEGER);");
-    }
-
-    public void recordScore(int numberCorrect, int numberIncorrect)
-    {
-        ContentValues cv = new ContentValues();
-
-        cv.put(WORD, "Dog");
-        cv.put(IMAGE, "DogImage");
-        cv.put(SOUND, "DogWordSpoken");
-        getWritableDatabase().insert(TABLE, WORD, cv);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2)
     {
-        android.util.Log.w("Constants", "Upgrading database, which will destroy all old data");
-        db.execSQL("DROP TABLE IF EXISTS data");
-        onCreate(getWritableDatabase());
+
     }
 }
