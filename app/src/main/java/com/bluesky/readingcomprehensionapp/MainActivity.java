@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import bluesky.gc.com.readingcomprehensionapp.R;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {

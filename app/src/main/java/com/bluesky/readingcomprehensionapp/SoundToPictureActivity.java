@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
-import bluesky.gc.com.readingcomprehensionapp.R;
 
 /**
  * Created by Tim on 12/2/2014. again
