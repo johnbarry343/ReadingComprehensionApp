@@ -111,13 +111,34 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public synchronized void close()
     {
         if(db != null)
+        {
             db.close();
+        }
         super.close();
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase)
     {
+        try {
+
+            createDataBase();
+
+        } catch (IOException ioe) {
+
+            throw new Error("Unable to create database");
+
+        }
+
+        try {
+
+            openDataBase();
+
+        }catch(SQLException sqle){
+
+            throw sqle;
+
+        }
 
     }
 
