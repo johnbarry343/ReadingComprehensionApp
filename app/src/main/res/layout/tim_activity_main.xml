@@ -30,7 +30,7 @@
                 android:layout_height="fill_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:text="text-to-picture"
+                android:text="text-to-pictures"
                 android:textColor="#EDFF99"
                 android:textStyle="bold" />
         </TableRow>
