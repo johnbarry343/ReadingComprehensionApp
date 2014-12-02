@@ -35,6 +35,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         int vid = v.getId();
         switch (vid) {
             case R.id.soundToText: {
+                Toast.makeText(this, "SoundToTextActivity",
+                        Toast.LENGTH_SHORT).show();
 //put name of sound-to-text activity in place of "ResultActivity"
                 //Intent intent = new Intent(this, ResultActivity.class);
                 //intent.putExtra("gameState", gameState);
@@ -46,11 +48,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.soundToPicture: {
                 Toast.makeText(this, "SoundToPictureActivity",
                         Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, SoundToPictureActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(this, SoundToPictureActivity.class);
+//                startActivity(intent);
                 break;
             }
             case R.id.pictureToText: {
+                Toast.makeText(this, "SoundToTextActivity",
+                        Toast.LENGTH_SHORT).show();
 //put name of picture-to-text activity in place of "ResultActivity"
                 //Intent intent = new Intent(this, ResultActivity.class);
                 //intent.putExtra("gameState", gameState);
