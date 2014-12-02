@@ -7,7 +7,7 @@ import android.view.View;
 import bluesky.gc.com.readingcomprehensionapp.R;
 
 /**
- * Created by Tim on 12/2/2014.
+ * Created by Tim on 12/2/2014. again
  */
 public class SoundToPictureActivity extends Activity implements View.OnClickListener {
     //Tim is doing this one
