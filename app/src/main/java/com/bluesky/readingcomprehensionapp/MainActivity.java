@@ -34,15 +34,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 //Intent intent = new Intent(this, ResultActivity.class);
                 //intent.putExtra("gameState", gameState);
                 //startActivity(intent);
-                //finish();
+                //finish(); - This is home page. Keep it up.
                 break;
             }
             case R.id.soundToPicture: {
 //put name of sound-to-picture activity in place of "ResultActivity"
-                //Intent intent = new Intent(this, ResultActivity.class);
-                //intent.putExtra("gameState", gameState);
-                //startActivity(intent);
-                //finish();
+                Intent intent = new Intent(this, SoundToPictureActivity.class);
+                startActivity(intent);
                 break;
             }
             case R.id.pictureToText: {
@@ -50,7 +48,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 //Intent intent = new Intent(this, ResultActivity.class);
                 //intent.putExtra("gameState", gameState);
                 //startActivity(intent);
-                //finish();
+                //finish(); - This is home page. Keep it up.
                 break;
             }
             case R.id.textToPictures: {
@@ -58,7 +56,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 //Intent intent = new Intent(this, ResultActivity.class);
                 //intent.putExtra("gameState", gameState);
                 //startActivity(intent);
-                //finish();
+                //finish(); - This is home page. Keep it up.
                 break;
             }
         }
