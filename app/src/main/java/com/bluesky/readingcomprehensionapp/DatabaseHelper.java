@@ -1,4 +1,4 @@
-package bluesky.gc.com.readingcomprehensionapp;
+package com.bluesky.readingcomprehensionapp;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -10,11 +10,9 @@ public class DatabaseHelper extends SQLiteOpenHelper
     private static DatabaseHelper mInstance = null;
 
     public static final String WORD = "word";
-    public static final String IMAGE = "image";
-    public static final String SOUND = "sound";
-    public static final String TABLE = "data";
+    public static final String TABLE = "ReadingComprehensionData";
     public static final String ID = "_id";
-    public static final String DATABASE_NAME = "db";
+    public static final String DATABASE_NAME = "ReadingComprehensionData";
     public static final String DATABASE_VERSION = "1";
 
     public static DatabaseHelper getInstance(Context ctx)

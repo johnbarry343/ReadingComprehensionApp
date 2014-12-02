@@ -29,13 +29,13 @@
             android:text="You can see an example of a red TextView control in the figure above. If you’re working with TextView control’s in your Java code, you can also set the color attribute of your TextView control programmatically using the setTextColor() method of the TextView class."
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </ScrollView>
-
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal" >
+
 
 
         <Button
