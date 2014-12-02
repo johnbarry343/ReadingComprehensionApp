@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class DatabaseHelper extends SQLiteOpenHelper
 {
@@ -47,11 +48,19 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     }
 
-    public static ArrayList<String> getData(Context ctx)
+    public static String[] getData(Context ctx)
     {
-        constantsCursor = (SQLiteCursor) DatabaseHelper.getInstance(ctx).getReadableDatabase().rawQuery("SELECT " + ID + ", " + WORD + " FROM " + TABLE + " WHERE " + LEVEL + " = 1 ORDER BY " + ID, null);
-    
+        constantsCursor = (SQLiteCursor) DatabaseHelper.getInstance(ctx).getReadableDatabase().rawQuery("SELECT " + WORD + " FROM " + TABLE + " WHERE " + LEVEL + " = 1", null);
+        constantsCursor.moveToFirst();
 
-        return data;
+        while (!constantsCursor.isAfterLast())
+        {
+            data.add(constantsCursor.getString(1));
+            constantsCursor.moveToNext();
+        }
+
+        Collections.shuffle(data);
+
+        return data.subList(0, 3).toArray(new String[4]);
     }
 }
