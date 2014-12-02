@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.bluesky.readingcomprehensionapp.R;
 
 /**
  * Created by Tim on 12/2/2014. again
@@ -14,7 +15,7 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sound_to_pic);
+        setContentView(R.layout.activity_main);
 
 
     }
