@@ -18,6 +18,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.bluesky.readingcomprehensionapp.SoundToPictureActivity" android:label="@string/app_name"/>
+        <activity android:name="com.bluesky.readingcomprehensionapp.SoundToTextActivity" android:label="@string/app_name"/>
+        <activity android:name="com.bluesky.readingcomprehensionapp.PictureToTextActivity" android:label="@string/app_name"/>
+        <activity android:name="com.bluesky.readingcomprehensionapp.TextToPicturesActivity" android:label="@string/app_name"/>
 
     </application>
 

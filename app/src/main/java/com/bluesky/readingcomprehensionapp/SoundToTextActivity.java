@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.media.SoundPool.OnLoadCompleteListener;
 import android.view.View.OnClickListener;
 
-import bluesky.gc.com.readingcomprehensionapp.R;
+import com.bluesky.readingcomprehensionapp.R;
 
 
 /**

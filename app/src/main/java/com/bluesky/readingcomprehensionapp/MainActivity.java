@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import bluesky.gc.com.readingcomprehensionapp.R;
+import com.bluesky.readingcomprehensionapp.R;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -30,30 +30,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(this, "clicked",
-                Toast.LENGTH_SHORT).show();
         int vid = v.getId();
         switch (vid) {
             case R.id.soundToText: {
-                Toast.makeText(this, "SoundToTextActivity",
-                        Toast.LENGTH_SHORT).show();
-//put name of sound-to-text activity in place of "ResultActivity"
-                //Intent intent = new Intent(this, ResultActivity.class);
-                //intent.putExtra("gameState", gameState);
-                //startActivity(intent);
-                //finish(); - This is home page. Keep it up.
-
+                Intent intent = new Intent(this, SoundToTextActivity.class);
+                startActivity(intent);
                 break;
             }
             case R.id.soundToPicture: {
-                Toast.makeText(this, "SoundToPictureActivity",
-                        Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(this, SoundToPictureActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(this, SoundToPictureActivity.class);
+                startActivity(intent);
                 break;
             }
             case R.id.pictureToText: {
-                Toast.makeText(this, "SoundToTextActivity",
+                Toast.makeText(this, "PictureToTextActivity",
                         Toast.LENGTH_SHORT).show();
 //put name of picture-to-text activity in place of "ResultActivity"
                 //Intent intent = new Intent(this, ResultActivity.class);
@@ -63,6 +53,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             }
             case R.id.textToPictures: {
+                Toast.makeText(this, "TextToPicturesActivity",
+                        Toast.LENGTH_SHORT).show();
 //put name of text-to-pictures activity in place of "ResultActivity"
                 //Intent intent = new Intent(this, ResultActivity.class);
                 //intent.putExtra("gameState", gameState);
