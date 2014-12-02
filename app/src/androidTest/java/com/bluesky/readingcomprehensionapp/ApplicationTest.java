@@ -1,4 +1,4 @@
-package bluesky.gc.com.readingcomprehensionapp;
+package com.bluesky.readingcomprehensionapp;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
