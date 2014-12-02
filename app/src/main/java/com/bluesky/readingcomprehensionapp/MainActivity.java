@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.bluesky.readingcomprehensionapp.R;
 
@@ -43,23 +42,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             }
             case R.id.pictureToText: {
-                Toast.makeText(this, "PictureToTextActivity",
-                        Toast.LENGTH_SHORT).show();
-//put name of picture-to-text activity in place of "ResultActivity"
-                //Intent intent = new Intent(this, ResultActivity.class);
-                //intent.putExtra("gameState", gameState);
-                //startActivity(intent);
-                //finish(); - This is home page. Keep it up.
+                Intent intent = new Intent(this, TextToPicturesActivity.class);
+                startActivity(intent);
                 break;
             }
             case R.id.textToPictures: {
-                Toast.makeText(this, "TextToPicturesActivity",
-                        Toast.LENGTH_SHORT).show();
-//put name of text-to-pictures activity in place of "ResultActivity"
-                //Intent intent = new Intent(this, ResultActivity.class);
-                //intent.putExtra("gameState", gameState);
-                //startActivity(intent);
-                //finish(); - This is home page. Keep it up.
+                Intent intent = new Intent(this, PictureToTextActivity.class);
+                startActivity(intent);
                 break;
             }
         }
