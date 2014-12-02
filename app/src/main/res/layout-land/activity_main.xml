@@ -11,66 +11,41 @@
     tools:context=".MyActivity">
 
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/layout"
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp" />
 
-        <ImageButton
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="Opt1"
-            android:id="@+id/button1"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:layout_marginBottom="50dp"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton5"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/imageButton"
+        android:layout_marginBottom="88dp" />
 
-        <ImageButton
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Opt2"
-            android:layout_marginLeft="20dp"
-            android:id="@+id/button2"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:layout_marginBottom="50dp"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton6"
+        android:layout_alignTop="@+id/imageButton5"
+        android:layout_toEndOf="@+id/imageButton" />
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton8"
+        android:layout_below="@+id/imageButton6"
+        android:layout_alignStart="@+id/imageButton6"
+        android:layout_marginTop="28dp" />
 
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonTop"
-            android:layout_weight="1"
-            android:layout_marginTop="50dp"/>
-
-        <ImageButton
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Opt3"
-            android:layout_marginLeft="20dp"
-            android:id="@+id/button3"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:layout_marginBottom="50dp"/>
-
-        <ImageButton
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Opt4"
-            android:layout_marginLeft="20dp"
-            android:id="@+id/button4"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:layout_marginBottom="50dp"/>
-    </LinearLayout>
-
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton9"
+        android:layout_alignTop="@+id/imageButton8"
+        android:layout_alignEnd="@+id/imageButton5" />
 </RelativeLayout>
