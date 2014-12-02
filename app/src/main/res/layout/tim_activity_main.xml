@@ -17,6 +17,7 @@
             android:layout_weight="1">
 
             <Button
+                android:id="@+id/pictureToText"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_margin="5dp"
@@ -26,11 +27,12 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/textToPictures"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:text="text-to-pictures"
+                android:drawableTop="@drawable/ic_launcher"
                 android:textColor="#EDFF99"
                 android:textStyle="bold" />
         </TableRow>
@@ -41,20 +43,22 @@
             android:layout_weight="1">
 
             <Button
+                android:id="@+id/soundToPicture"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:text="sound-to-picture"
+                android:drawableTop="@drawable/ic_launcher"
                 android:textColor="#EDFF99"
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/soundToText"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:text="sound-to-text"
+                android:drawableTop="@drawable/ic_launcher"
                 android:textColor="#EDFF99"
                 android:textStyle="bold" />
         </TableRow>
