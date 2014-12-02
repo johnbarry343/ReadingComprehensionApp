@@ -9,9 +9,9 @@ public class DatabaseHelper extends SQLiteOpenHelper
 {
     private static DatabaseHelper mInstance = null;
 
-    public static final String WORD = "numberCorrect";
-    public static final String IMAGE = "numberIncorrect";
-    public static final String SOUND = "db";
+    public static final String WORD = "word";
+    public static final String IMAGE = "image";
+    public static final String SOUND = "sound";
     public static final String TABLE = "data";
     public static final String ID = "_id";
     public static final String DATABASE_NAME = "db";
