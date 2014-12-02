@@ -1,11 +1,11 @@
 package com.bluesky.readingcomprehensionapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import bluesky.gc.com.readingcomprehensionapp.R;
 
@@ -19,14 +19,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tim_activity_main);
         soundToText = (Button) findViewById(R.id.soundToText);
+        soundToText.setOnClickListener(this);
         soundToPicture = (Button) findViewById(R.id.soundToPicture);
+        soundToPicture.setOnClickListener(this);
         pictureToText = (Button) findViewById(R.id.pictureToText);
+        pictureToText.setOnClickListener(this);
         textToPictures = (Button) findViewById(R.id.textToPictures);
+        textToPictures.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        boolean goodProblem = true;
+        Toast.makeText(this, "clicked",
+                Toast.LENGTH_SHORT).show();
         int vid = v.getId();
         switch (vid) {
             case R.id.soundToText: {
@@ -34,15 +39,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 //Intent intent = new Intent(this, ResultActivity.class);
                 //intent.putExtra("gameState", gameState);
                 //startActivity(intent);
-                //finish();
+                //finish(); - This is home page. Keep it up.
+
                 break;
             }
             case R.id.soundToPicture: {
-//put name of sound-to-picture activity in place of "ResultActivity"
-                //Intent intent = new Intent(this, ResultActivity.class);
-                //intent.putExtra("gameState", gameState);
-                //startActivity(intent);
-                //finish();
+                Toast.makeText(this, "SoundToPictureActivity",
+                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, SoundToPictureActivity.class);
+                startActivity(intent);
                 break;
             }
             case R.id.pictureToText: {
@@ -50,7 +55,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 //Intent intent = new Intent(this, ResultActivity.class);
                 //intent.putExtra("gameState", gameState);
                 //startActivity(intent);
-                //finish();
+                //finish(); - This is home page. Keep it up.
                 break;
             }
             case R.id.textToPictures: {
@@ -58,7 +63,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 //Intent intent = new Intent(this, ResultActivity.class);
                 //intent.putExtra("gameState", gameState);
                 //startActivity(intent);
-                //finish();
+                //finish(); - This is home page. Keep it up.
                 break;
             }
         }
