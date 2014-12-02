@@ -48,9 +48,9 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
     }
 
-    public static String[] getData(Context ctx)
+    public static String[] getData(Context ctx, int level)
     {
-        constantsCursor = (SQLiteCursor) DatabaseHelper.getInstance(ctx).getReadableDatabase().rawQuery("SELECT " + WORD + " FROM " + TABLE + " WHERE " + LEVEL + " = 1", null);
+        constantsCursor = (SQLiteCursor) DatabaseHelper.getInstance(ctx).getReadableDatabase().rawQuery("SELECT " + WORD + " FROM " + TABLE + " WHERE " + LEVEL + " = " + Integer.toString(level), null);
         constantsCursor.moveToFirst();
 
         while (!constantsCursor.isAfterLast())
