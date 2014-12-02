@@ -5,9 +5,14 @@ import android.app.Activity;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.media.SoundPool.OnLoadCompleteListener;
+import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.bluesky.readingcomprehensionapp.R;
+
+import static android.view.View.OnTouchListener;
 
 
 /**
@@ -47,6 +52,8 @@ public class SoundToTextActivity extends Activity {
     private int square;
     private int tree;
     private int triangle;
+
+
 
     boolean plays = false, loaded = false;
     float actVolume, maxVolume, volume;
@@ -195,8 +202,12 @@ public class SoundToTextActivity extends Activity {
             public void onLoadComplete(SoundPool soundPool, int sampleId,
                                        int status) {
                 loaded = true;
+
+
             }
         });
+
+
 
 
 
@@ -236,14 +247,16 @@ public class SoundToTextActivity extends Activity {
 }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //setContentView(R.layout.sound_to_word); NOT WORKING YET
-        loadAudio();
+        setContentView(R.layout.sound_to_word);
 
 
 
 
 
     }
+
+
 }
