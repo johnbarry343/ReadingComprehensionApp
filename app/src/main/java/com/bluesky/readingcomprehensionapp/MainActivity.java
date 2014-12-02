@@ -1,6 +1,7 @@
 package com.bluesky.readingcomprehensionapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +36,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 //intent.putExtra("gameState", gameState);
                 //startActivity(intent);
                 //finish(); - This is home page. Keep it up.
+
                 break;
             }
             case R.id.soundToPicture: {
