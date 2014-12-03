@@ -1,7 +1,9 @@
 package com.bluesky.readingcomprehensionapp;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,18 @@ public class ActivityUtilities {
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
         toast.show();
+    }
+
+    static void rightAnswerAlertDialog(Activity cc) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(cc);
+        builder.setTitle("YES !");
+        builder.setPositiveButton("-> GO -> ->", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichbutton) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.setIcon(R.drawable.right_answer_alert_dialog_icon);
+        dialog.show();
     }
 
 }
