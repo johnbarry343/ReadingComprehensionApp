@@ -2,6 +2,7 @@ package com.bluesky.readingcomprehensionapp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -14,6 +15,7 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
     //Tim is doing this one
     ImageButton imageButton5, imageButton6, imageButton8, imageButton9;
     int correctAnswer = 0;
+    LayoutInflater inflater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
         imageButton8.setOnClickListener(this);
         imageButton9 = (ImageButton) findViewById(R.id.imageButton9);
         imageButton9.setOnClickListener(this);
+        inflater = getLayoutInflater();
         //draw new problem. Need to store the button ID of the correct answer in correctAnswer
     }
 
@@ -52,5 +55,6 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
                 break;
             }
         }
+        if ( !gotItRight ) ActivityUtilities.wrongAnswerToast(this, inflater);
     }
 }

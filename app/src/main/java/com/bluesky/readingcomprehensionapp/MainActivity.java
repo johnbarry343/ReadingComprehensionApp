@@ -3,6 +3,7 @@ package com.bluesky.readingcomprehensionapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
@@ -25,6 +26,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         pictureToText.setOnClickListener(this);
         textToPictures = (Button) findViewById(R.id.textToPictures);
         textToPictures.setOnClickListener(this);
+
     }
 
     @Override
