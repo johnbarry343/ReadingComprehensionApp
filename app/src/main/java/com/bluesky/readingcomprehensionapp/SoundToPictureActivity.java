@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.bluesky.readingcomprehensionapp.R;
 
@@ -55,6 +56,11 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
                 break;
             }
         }
+        gotItRight = true;
         if ( !gotItRight ) ActivityUtilities.wrongAnswerToast(this, inflater);
+        ActivityUtilities.rightAnswerAlertDialog(this);
+        Toast.makeText(this,
+                "New question.",
+                Toast.LENGTH_LONG).show();
     }
 }
