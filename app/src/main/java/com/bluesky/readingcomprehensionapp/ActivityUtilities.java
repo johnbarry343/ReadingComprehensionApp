@@ -14,12 +14,12 @@ import android.widget.Toast;
 public class ActivityUtilities {
 
     static void wrongAnswerToast(Activity cc, LayoutInflater li) {
-        View layout = li.inflate(R.layout.custom_toast,
+        View layout = li.inflate(R.layout.wrong_answer_toast,
                 (ViewGroup) cc.findViewById(R.id.toast_layout_root));
 
         Toast toast = new Toast(cc);
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
         toast.show();
     }
