@@ -48,6 +48,11 @@ public class DatabaseHelper extends SQLiteOpenHelper
     {
     }
 
+    /**
+     * Returns an array of four String objects randomly chosen from the database based on the level passed
+     * @param level the level of difficulty that the user is currently at
+     * @return      a random String array of four objects of the level specified
+     */
     public String[] getData(int level)
     {
         constantsCursor = (SQLiteCursor) getReadableDatabase().rawQuery("SELECT " + WORD + " FROM " + TABLE + " WHERE " + LEVEL + " = " + Integer.toString(level), null);
