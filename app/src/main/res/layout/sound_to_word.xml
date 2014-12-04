@@ -16,8 +16,7 @@ android:gravity="center"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-android:layout_weight="5"
+android:layout_weight="4"
         android:layout_marginTop="28dp" />
 
 
@@ -25,37 +24,50 @@ android:layout_weight="5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_weight="2.5
-        "
-      >
+        android:layout_weight="3">
+
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:id="@+id/buttonOne"
+        android:text="lonnnnnng"
+        android:gravity="center"
         />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonTwo"/>
+        android:id="@+id/buttonTwo"
+        android:text="HIHIHI"
+
+        android:gravity="center"
+        />
 </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_weight="2.5"
+        android:gravity="center_horizontal"
+        android:layout_weight="3"
+        android:text="HIHIHI"
+
         >
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonThree"/>
+        android:id="@+id/buttonThree"
+        android:gravity="center"
+        android:text="HIHIHI"
+
+        />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/buttonThree"
 
-        android:id="@+id/buttonFour"/>
+        android:id="@+id/buttonFour"
+        android:text="HIHIHI"
+        android:gravity="center"
+        />
         </LinearLayout>
 
 </LinearLayout>
