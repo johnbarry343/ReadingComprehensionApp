@@ -89,6 +89,7 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
     void drawNewProblem() {
         Resources res = this.getResources();
         int imageId;
+        data.clear();
         String[] dataArray = DatabaseHelper.getInstance(getApplicationContext()).getData(1);
         correctString = dataArray[0];
         for (int i = 0; i < 4; i++) {
