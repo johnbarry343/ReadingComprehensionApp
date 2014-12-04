@@ -107,6 +107,5 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
         imageId = res.getIdentifier(data.get(3), "drawable", this.getPackageName());
         if (data.get(3).equals(correctString)) correctAnswer = R.id.imageButton9;
         imageButton9.setImageResource(imageId);
-
     }
 }
