@@ -23,27 +23,43 @@ import static android.view.View.OnTouchListener;
  */
 
 public class SoundToTextActivity extends Activity {
+    String correct;
+    String wrongOne;
+    String wrongTwo;
+    String wrongThree;
 
-
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.sound_to_word);
-
-        Button one = (Button)this.findViewById(R.id.testButton);
-        final MediaPlayer mp = MediaPlayer.create(this, R.raw.bear);
-        one.setOnClickListener(new OnClickListener(){
+    public void setButtons() {
+        //String[] data = DatabaseHelper.getInstance(getApplicationContext()).getData(1);
+        // ^ gets string
+        correct = "bear";
+        // ^ gets right answer
+        int correctId = this.getResources().getIdentifier(correct, "raw", this.getPackageName());
+        // ^ uses that grab the identifier for the corresponding sound file from db name
+        Button one = (Button) this.findViewById(R.id.testButton);
+        final MediaPlayer mp = MediaPlayer.create(this, correctId);
+        one.setOnClickListener(new OnClickListener() {
 
             public void onClick(View v) {
                 mp.start();
             }
-        });
+        });}
+        // sets the replay button to the right sound
+
+
+        // wrongOne = data [2];
+        //wrongTwo = data [3];
+        //wrongThree = data [4];    }
+
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.sound_to_word);
+
+        setButtons();
+
+
     }
 
-
 }
 
 
@@ -51,4 +67,4 @@ public class SoundToTextActivity extends Activity {
 
 
 
-}
+
