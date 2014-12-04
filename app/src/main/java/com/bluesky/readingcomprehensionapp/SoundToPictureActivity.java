@@ -1,6 +1,7 @@
 package com.bluesky.readingcomprehensionapp;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,10 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.bluesky.readingcomprehensionapp.R;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Created by Tim on 12/2/2014. again
@@ -17,6 +22,8 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
     ImageButton imageButton5, imageButton6, imageButton8, imageButton9, soundImageButton;
     int correctAnswer = 0;
     LayoutInflater inflater;
+    String[] dataArray = {"right_answer_alert_dialog_icon", "ic_launcher", "sound_icon", "wrong_answer_toast_icon"};
+    ArrayList<String> data = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +40,9 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
         soundImageButton = (ImageButton) findViewById(R.id.imageButton);
         soundImageButton.setOnClickListener(this);
         inflater = getLayoutInflater();
+        for (int i = 0; i < 4; i++) {
+            data.add(dataArray[i]);
+        }
         drawNewProblem();
     }
 
@@ -65,6 +75,7 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
                 break;
             }
         }
+        gotItRight = true;
         if (!gotItRight) {
             ActivityUtilities.wrongAnswerToast(this, inflater);
         } else {
@@ -75,10 +86,20 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
 
     void drawNewProblem() {
         //draw new problem. Need to store the button ID of the correct answer in correctAnswer
-        imageButton5.setImageResource(R.drawable.right_answer_alert_dialog_icon);
-        imageButton6.setImageResource(R.drawable.wrong_answer_toast_icon);
-        imageButton8.setImageResource(R.drawable.ic_launcher);
-        imageButton9.setImageResource(R.drawable.sound_icon);
+//        String[] data = DatabaseHelper.getInstance(getApplicationContext()).getData(1);
+        //need the resources for the strings
+        Resources res = this.getResources();
+        int imageId;
+
+        Collections.shuffle(data);
+        imageId = res.getIdentifier(data.get(0), "drawable", this.getPackageName());
+        imageButton5.setImageResource(imageId);
+        imageId = res.getIdentifier(data.get(1), "drawable", this.getPackageName());
+        imageButton6.setImageResource(imageId);
+        imageId = res.getIdentifier(data.get(2), "drawable", this.getPackageName());
+        imageButton8.setImageResource(imageId);
+        imageId = res.getIdentifier(data.get(3), "drawable", this.getPackageName());
+        imageButton9.setImageResource(imageId);
 
     }
 }
