@@ -25,8 +25,6 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
     String correctString = "";
     LayoutInflater inflater;
     MediaPlayer mp = new MediaPlayer();
-    //using this testArray until the figures are available
-    String[] testArray = {"right_answer_alert_dialog_icon", "ic_launcher", "sound_icon", "wrong_answer_toast_icon"};
     ArrayList<String> data = new ArrayList<String>();
 
     @Override
@@ -93,20 +91,16 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
             data.add(dataArray[i]);
         }
         Collections.shuffle(data);
-//        imageId = res.getIdentifier(data.get(0), "drawable", this.getPackageName());
-        imageId = res.getIdentifier(testArray[0], "drawable", this.getPackageName());
+        imageId = res.getIdentifier(data.get(0), "drawable", this.getPackageName());
         if (data.get(0).equals(correctString)) correctAnswer = R.id.imageButton5;
         imageButton5.setImageResource(imageId);
-//        imageId = res.getIdentifier(data.get(1), "drawable", this.getPackageName());
-        imageId = res.getIdentifier(testArray[1], "drawable", this.getPackageName());
+        imageId = res.getIdentifier(data.get(1), "drawable", this.getPackageName());
         if (data.get(1).equals(correctString)) correctAnswer = R.id.imageButton6;
         imageButton6.setImageResource(imageId);
-//        imageId = res.getIdentifier(data.get(2), "drawable", this.getPackageName());
-        imageId = res.getIdentifier(testArray[2], "drawable", this.getPackageName());
+        imageId = res.getIdentifier(data.get(2), "drawable", this.getPackageName());
         if (data.get(2).equals(correctString)) correctAnswer = R.id.imageButton8;
         imageButton8.setImageResource(imageId);
-//        imageId = res.getIdentifier(data.get(3), "drawable", this.getPackageName());
-        imageId = res.getIdentifier(testArray[3], "drawable", this.getPackageName());
+        imageId = res.getIdentifier(data.get(3), "drawable", this.getPackageName());
         if (data.get(3).equals(correctString)) correctAnswer = R.id.imageButton9;
         imageButton9.setImageResource(imageId);
 
