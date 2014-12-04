@@ -25,7 +25,8 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
     String correctString = "";
     LayoutInflater inflater;
     MediaPlayer mp = new MediaPlayer();
-    String[] dataArray = {"right_answer_alert_dialog_icon", "ic_launcher", "sound_icon", "wrong_answer_toast_icon"};
+    //using this testArray until the figures are available
+    String[] testArray = {"right_answer_alert_dialog_icon", "ic_launcher", "sound_icon", "wrong_answer_toast_icon"};
     ArrayList<String> data = new ArrayList<String>();
 
     @Override
@@ -43,9 +44,7 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
         soundImageButton = (ImageButton) findViewById(R.id.imageButton);
         soundImageButton.setOnClickListener(this);
         inflater = getLayoutInflater();
-        for (int i = 0; i < 4; i++) {
-            data.add(dataArray[i]);
-        }
+
         drawNewProblem();
     }
 
@@ -71,37 +70,44 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
                 break;
             }
             case R.id.imageButton: {
-                correctString = "bear";
                 int correctId = this.getResources().getIdentifier(correctString, "raw", this.getPackageName());
                 mp = MediaPlayer.create(this, correctId);
                 mp.start();
                 break;
             }
         }
-        gotItRight = true;
         if (!gotItRight) {
             ActivityUtilities.wrongAnswerToast(this, inflater);
         } else {
-            ActivityUtilities.rightAnswerAlertDialog(this, "bear");
+            ActivityUtilities.rightAnswerAlertDialog(this, correctString);
             drawNewProblem();
         }
     }
 
     void drawNewProblem() {
-        //draw new problem. Need to store the button ID of the correct answer in correctAnswer
-//        String[] data = DatabaseHelper.getInstance(getApplicationContext()).getData(1);
-        //need the resources for the strings
         Resources res = this.getResources();
         int imageId;
-
+        String[] dataArray = DatabaseHelper.getInstance(getApplicationContext()).getData(1);
+        correctString = dataArray[0];
+        for (int i = 0; i < 4; i++) {
+            data.add(dataArray[i]);
+        }
         Collections.shuffle(data);
-        imageId = res.getIdentifier(data.get(0), "drawable", this.getPackageName());
+//        imageId = res.getIdentifier(data.get(0), "drawable", this.getPackageName());
+        imageId = res.getIdentifier(testArray[0], "drawable", this.getPackageName());
+        if (data.get(0).equals(correctString)) correctAnswer = R.id.imageButton5;
         imageButton5.setImageResource(imageId);
-        imageId = res.getIdentifier(data.get(1), "drawable", this.getPackageName());
+//        imageId = res.getIdentifier(data.get(1), "drawable", this.getPackageName());
+        imageId = res.getIdentifier(testArray[1], "drawable", this.getPackageName());
+        if (data.get(1).equals(correctString)) correctAnswer = R.id.imageButton6;
         imageButton6.setImageResource(imageId);
-        imageId = res.getIdentifier(data.get(2), "drawable", this.getPackageName());
+//        imageId = res.getIdentifier(data.get(2), "drawable", this.getPackageName());
+        imageId = res.getIdentifier(testArray[2], "drawable", this.getPackageName());
+        if (data.get(2).equals(correctString)) correctAnswer = R.id.imageButton8;
         imageButton8.setImageResource(imageId);
-        imageId = res.getIdentifier(data.get(3), "drawable", this.getPackageName());
+//        imageId = res.getIdentifier(data.get(3), "drawable", this.getPackageName());
+        imageId = res.getIdentifier(testArray[3], "drawable", this.getPackageName());
+        if (data.get(3).equals(correctString)) correctAnswer = R.id.imageButton9;
         imageButton9.setImageResource(imageId);
 
     }
