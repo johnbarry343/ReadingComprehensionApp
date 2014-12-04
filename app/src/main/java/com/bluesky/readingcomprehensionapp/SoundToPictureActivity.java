@@ -2,6 +2,7 @@ package com.bluesky.readingcomprehensionapp;
 
 import android.app.Activity;
 import android.content.res.Resources;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,9 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
 
     ImageButton imageButton5, imageButton6, imageButton8, imageButton9, soundImageButton;
     int correctAnswer = 0;
+    String correctString = "";
     LayoutInflater inflater;
+    MediaPlayer mp = new MediaPlayer();
     String[] dataArray = {"right_answer_alert_dialog_icon", "ic_launcher", "sound_icon", "wrong_answer_toast_icon"};
     ArrayList<String> data = new ArrayList<String>();
 
@@ -68,10 +71,10 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
                 break;
             }
             case R.id.imageButton: {
-                // play the sound file for this problem
-                Toast.makeText(this,
-                        "Play sound.",
-                        Toast.LENGTH_SHORT).show();
+                correctString = "bear";
+                int correctId = this.getResources().getIdentifier(correctString, "raw", this.getPackageName());
+                mp = MediaPlayer.create(this, correctId);
+                mp.start();
                 break;
             }
         }
