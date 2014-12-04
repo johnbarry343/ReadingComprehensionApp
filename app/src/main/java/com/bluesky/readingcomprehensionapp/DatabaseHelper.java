@@ -12,15 +12,17 @@ public class DatabaseHelper extends SQLiteOpenHelper
 {
     private static DatabaseHelper mInstance = null;
 
-    public static final String WORD = "word";
-    public static final String TABLE = "ReadingComprehensionData";
-    public static final String LEVEL = "level";
-    public static final String ID = "_id";
-    public static final String DATABASE_NAME = "ReadingComprehensionData";
-    public static final String DATABASE_VERSION = "1";
+    private static final String WORD = "word";
+    private static final String TABLE = "ReadingComprehensionData";
+    private static final String LEVEL = "level";
+    private static final String ID = "_id";
+    private static final String DATABASE_NAME = "ReadingComprehensionData";
+    private static final String DATABASE_VERSION = "1";
 
-    private static final ArrayList<String> data = null;
+    private static final ArrayList<String> data = new ArrayList<String>();
+
     private static SQLiteCursor constantsCursor;
+    private SQLiteDatabase db;
 
     public static DatabaseHelper getInstance(Context ctx)
     {
@@ -39,28 +41,26 @@ public class DatabaseHelper extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase)
     {
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2)
     {
-
     }
 
-    public static String[] getData(Context ctx, int level)
+    public String[] getData(int level)
     {
-        constantsCursor = (SQLiteCursor) DatabaseHelper.getInstance(ctx).getReadableDatabase().rawQuery("SELECT " + WORD + " FROM " + TABLE + " WHERE " + LEVEL + " = " + Integer.toString(level), null);
+        constantsCursor = (SQLiteCursor) getReadableDatabase().rawQuery("SELECT " + WORD + " FROM " + TABLE + " WHERE " + LEVEL + " = " + Integer.toString(level), null);
         constantsCursor.moveToFirst();
 
         while (!constantsCursor.isAfterLast())
         {
-            data.add(constantsCursor.getString(1));
+            data.add(constantsCursor.getString(0));
             constantsCursor.moveToNext();
         }
 
         Collections.shuffle(data);
 
-        return data.subList(0, 3).toArray(new String[4]);
+        return data.subList(0, 4).toArray(new String[4]);
     }
 }
