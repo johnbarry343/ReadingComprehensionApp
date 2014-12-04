@@ -49,6 +49,7 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
     @Override
     public void onClick(View v) {
         boolean gotItRight = false;
+        boolean listen = false;
         int vid = v.getId();
         switch (vid) {
             case R.id.imageButton5: {
@@ -68,17 +69,20 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
                 break;
             }
             case R.id.imageButton: {
+                listen = true;
                 int correctId = this.getResources().getIdentifier(correctString, "raw", this.getPackageName());
                 mp = MediaPlayer.create(this, correctId);
                 mp.start();
                 break;
             }
         }
-        if (!gotItRight) {
-            ActivityUtilities.wrongAnswerToast(this, inflater);
-        } else {
-            ActivityUtilities.rightAnswerAlertDialog(this, correctString);
-            drawNewProblem();
+        if (!listen) {
+            if (!gotItRight) {
+                ActivityUtilities.wrongAnswerToast(this, inflater);
+            } else {
+                ActivityUtilities.rightAnswerAlertDialog(this, correctString);
+                drawNewProblem();
+            }
         }
     }
 

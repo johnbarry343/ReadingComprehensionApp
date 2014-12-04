@@ -25,7 +25,8 @@
                 android:drawableTop="@drawable/test"
                 android:textColor="#EDFF99"
                 android:src="@drawable/square"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:background="@android:color/transparent" />
 
             <Button
                 android:id="@+id/textToPictures"
@@ -35,7 +36,8 @@
                 android:layout_weight="1"
                 android:drawableTop="@drawable/test"
                 android:textColor="#EDFF99"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:background="@android:color/transparent"/>
         </TableRow>
 
         <TableRow
@@ -51,7 +53,8 @@
                 android:layout_weight="1"
                 android:drawableTop="@drawable/test"
                 android:textColor="#EDFF99"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:background="@android:color/transparent"/>
 
             <Button
                 android:id="@+id/soundToText"
@@ -61,7 +64,8 @@
                 android:layout_weight="1"
                 android:drawableTop="@drawable/test"
                 android:textColor="#EDFF99"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:background="@android:color/transparent"/>
         </TableRow>
     </TableLayout>
 </RelativeLayout>
