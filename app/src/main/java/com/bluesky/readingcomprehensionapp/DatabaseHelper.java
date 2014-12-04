@@ -16,13 +16,14 @@ public class DatabaseHelper extends SQLiteOpenHelper
     private static final String TABLE = "ReadingComprehensionData";
     private static final String LEVEL = "level";
     private static final String ID = "_id";
-    private static final String DATABASE_NAME = "ReadingComprehensionData";
     private static final String DATABASE_VERSION = "1";
+
+    private static String DATABASE_NAME = "ReadingComprehensionData";
+    private SQLiteDatabase db;
+    private static SQLiteCursor constantsCursor;
 
     private static final ArrayList<String> data = new ArrayList<String>();
 
-    private static SQLiteCursor constantsCursor;
-    private SQLiteDatabase db;
 
     public static DatabaseHelper getInstance(Context ctx)
     {
@@ -39,19 +40,56 @@ public class DatabaseHelper extends SQLiteOpenHelper
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase)
+    public void onCreate(SQLiteDatabase db)
     {
+        android.util.Log.i("onCreate", "Creating Database");
+
+        db.execSQL("CREATE TABLE " + TABLE + " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + WORD + " TEXT, " + LEVEL + " INTEGER);");
+        db.execSQL("INSERT INTO " + TABLE + " SELECT NULL AS _id, 'ball' AS word, 1 AS level\n" +
+                "UNION SELECT NULL, 'bear', 1\n" +
+                "UNION SELECT NULL, 'bee', 1\n" +
+                "UNION SELECT NULL, 'book', 1\n" +
+                "UNION SELECT NULL, 'bus', 1\n" +
+                "UNION SELECT NULL, 'car', 1\n" +
+                "UNION SELECT NULL, 'cat', 1\n" +
+                "UNION SELECT NULL, 'circle', 1\n" +
+                "UNION SELECT NULL, 'cow', 1\n" +
+                "UNION SELECT NULL, 'dog', 1\n" +
+                "UNION SELECT NULL, 'door', 1\n" +
+                "UNION SELECT NULL, 'duck', 1\n" +
+                "UNION SELECT NULL, 'egg', 1\n" +
+                "UNION SELECT NULL, 'fish', 1\n" +
+                "UNION SELECT NULL, 'flower', 1\n" +
+                "UNION SELECT NULL, 'frog', 1\n" +
+                "UNION SELECT NULL, 'goat', 1\n" +
+                "UNION SELECT NULL, 'hat', 1\n" +
+                "UNION SELECT NULL, 'house', 1\n" +
+                "UNION SELECT NULL, 'leaf', 1\n" +
+                "UNION SELECT NULL, 'lion', 1\n" +
+                "UNION SELECT NULL, 'moon', 1\n" +
+                "UNION SELECT NULL, 'pie', 1\n" +
+                "UNION SELECT NULL, 'ship', 1\n" +
+                "UNION SELECT NULL, 'sky', 1\n" +
+                "UNION SELECT NULL, 'star', 1\n" +
+                "UNION SELECT NULL, 'sun', 1\n" +
+                "UNION SELECT NULL, 'square', 1\n" +
+                "UNION SELECT NULL, 'tree', 1\n" +
+                "UNION SELECT NULL, 'triangle', 1");
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2)
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
+        android.util.Log.w("ReadingComprehensionData", "Upgrading database, which will destroy all old data");
+        db.execSQL("DROP TABLE IF EXISTS ReadingComprehensionData");
+        onCreate(getWritableDatabase());
     }
 
     /**
      * Returns an array of four String objects randomly chosen from the database based on the level passed
+     *
      * @param level the level of difficulty that the user is currently at
-     * @return      a random String array of four objects of the level specified
+     * @return a random String array of four objects of the level specified
      */
     public String[] getData(int level)
     {
