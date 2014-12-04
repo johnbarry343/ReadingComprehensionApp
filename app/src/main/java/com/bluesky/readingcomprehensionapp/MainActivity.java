@@ -2,12 +2,18 @@ package com.bluesky.readingcomprehensionapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.bluesky.readingcomprehensionapp.R;
+
+import java.io.IOException;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
