@@ -51,4 +51,3 @@ public class SoundToTextActivity extends Activity {
 
 
 
-}

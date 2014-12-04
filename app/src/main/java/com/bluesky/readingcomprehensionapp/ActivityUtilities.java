@@ -26,9 +26,10 @@ public class ActivityUtilities {
         toast.show();
     }
 
-    static void rightAnswerAlertDialog(Activity cc) {
+    static void rightAnswerAlertDialog(Activity cc, String word) {
+        if (word == null || word.equals("")) word = "YES !";
         AlertDialog.Builder builder = new AlertDialog.Builder(cc);
-        builder.setTitle("YES !");
+        builder.setTitle(word);
         builder.setPositiveButton("-> GO -> ->", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichbutton) {
             }
