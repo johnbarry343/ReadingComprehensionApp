@@ -50,12 +50,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             }
             case R.id.pictureToText: {
-                Intent intent = new Intent(this, TextToPicturesActivity.class);
+                Intent intent = new Intent(this, PictureToTextActivity.class);
                 startActivity(intent);
                 break;
             }
             case R.id.textToPictures: {
-                Intent intent = new Intent(this, PictureToTextActivity.class);
+                Intent intent = new Intent(this, TextToPicturesActivity.class);
                 startActivity(intent);
                 break;
             }
