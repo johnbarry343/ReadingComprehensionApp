@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-android:gravity="center"
+    android:gravity="center"
+    android:background="#000"
     tools:context=".MyActivity">
 
 
@@ -19,7 +20,7 @@ android:gravity="center"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton"
         android:layout_alignParentTop="true"
-android:layout_weight="4"
+        android:layout_weight="4"
 
         android:src="@drawable/sound_icon"
         android:background="@android:color/transparent"
@@ -32,23 +33,30 @@ android:layout_weight="4"
         android:gravity="center"
         android:layout_weight="3">
 
-    <Button
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonOne"
-        android:text="lonnnnnng"
-        android:gravity="center"
-        />
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonOne"
+            android:text="lonnnnnng"
+            android:textSize="40sp"
+            android:background="@android:color/transparent"
+            android:textColor="#FFF"
 
-    <Button
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonTwo"
-        android:text="HIHIHI"
+            android:gravity="center"
+            />
 
-        android:gravity="center"
-        />
-</LinearLayout>
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonTwo"
+            android:text="HIHIHI"
+            android:background="@android:color/transparent"
+            android:textColor="#FFF"
+
+            android:textSize="40sp"
+            android:gravity="center"
+            />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,24 +64,30 @@ android:layout_weight="4"
         android:layout_weight="3"
         android:text="HIHIHI"
 
+        android:textSize="40sp"
         >
-    <Button
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonThree"
-        android:gravity="center"
-        android:text="HIHIHI"
+        <Button
+            android:layout_width="170dp"
+            android:background="@android:color/transparent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonThree"
+            android:gravity="center"
+            android:text="HIHIHI"
+            android:textColor="#FFF"
 
-        />
+            android:textSize="40sp"
+            />
 
-    <Button
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-
-        android:id="@+id/buttonFour"
-        android:text="HIHIHI"
-        android:gravity="center"
-        />
-        </LinearLayout>
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:background="@android:color/transparent"
+            android:textColor="#FFF"
+            android:id="@+id/buttonFour"
+            android:text="HIHIHI"
+            android:gravity="center"
+            />
+    </LinearLayout>
 
 </LinearLayout>
