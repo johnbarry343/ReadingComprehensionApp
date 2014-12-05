@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class TextToPicturesActivity extends Activity implements View.OnClickList
     private ImageButton imageButtonLowerRight;
     private String correctString;
     private int correctAnswer = 0;
+    ImageView wrongAnswerImageView;
     LayoutInflater inflater;
 
     @Override
@@ -31,6 +33,7 @@ public class TextToPicturesActivity extends Activity implements View.OnClickList
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_to_pic);
+        wrongAnswerImageView = (ImageView) findViewById(R.id.imageView);
         text = (TextView) findViewById(R.id.text);
         imageButtonUpperLeft = (ImageButton) findViewById(R.id.imageButtonUpperLeft);
         imageButtonUpperLeft.setOnClickListener(this);
@@ -60,12 +63,21 @@ public class TextToPicturesActivity extends Activity implements View.OnClickList
         outState.putString("data3", data.get(3));
         outState.putInt("correctAnswer", correctAnswer);
         outState.putString("correctString", correctString);
+        outState.putInt("isWrongAnswerGiven", wrongAnswerImageView.getVisibility());
         super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState)
     {
+        if (savedInstanceState.getInt("isWrongAnswerGiven") == View.VISIBLE)
+        {
+            wrongAnswerImageView.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            wrongAnswerImageView.setVisibility(View.INVISIBLE);
+        }
         int imageButtonUpperLeftId = savedInstanceState.getInt("imageButtonUpperLeftImage");
         imageButtonUpperLeft.setImageResource(imageButtonUpperLeftId);
         int imageButtonUpperRightId = savedInstanceState.getInt("imageButtonUpperRightImage");
@@ -93,6 +105,7 @@ public class TextToPicturesActivity extends Activity implements View.OnClickList
     {
         int imageId;
         data.clear();
+        wrongAnswerImageView.setVisibility(View.INVISIBLE);
         String[] dataArray = DatabaseHelper.getInstance(getApplicationContext()).getData(1);
         correctString = dataArray[0];
         text.setText(correctString);
@@ -130,6 +143,7 @@ public class TextToPicturesActivity extends Activity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        wrongAnswerImageView.setVisibility(View.INVISIBLE);
         boolean gotItRight = false;
         boolean listen = false;
         int vid = v.getId();
@@ -154,9 +168,8 @@ public class TextToPicturesActivity extends Activity implements View.OnClickList
 
         if (!listen) {
             if (!gotItRight) {
-                ActivityUtilities.wrongAnswerToast(this, inflater);
+                wrongAnswerImageView.setVisibility(View.VISIBLE);
             } else {
-                ActivityUtilities.rightAnswerAlertDialog(this, correctString);
                 drawNewProblem();
             }
         }
