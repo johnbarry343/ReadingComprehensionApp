@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bluesky.readingcomprehensionapp.R;
@@ -21,6 +22,7 @@ import java.util.Collections;
 public class SoundToPictureActivity extends Activity implements View.OnClickListener {
 
     ImageButton imageButton5, imageButton6, imageButton8, imageButton9, soundImageButton;
+    ImageView wrongAnswerImageView;
     int correctAnswer = 0;
     String correctString = "";
     LayoutInflater inflater;
@@ -31,6 +33,7 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sound_to_pic);
+        wrongAnswerImageView = (ImageView) findViewById(R.id.imageView);
         imageButton5 = (ImageButton) findViewById(R.id.imageButton5);
         imageButton5.setOnClickListener(this);
         imageButton6 = (ImageButton) findViewById(R.id.imageButton6);
@@ -73,6 +76,7 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        wrongAnswerImageView.setVisibility(View.INVISIBLE);
         boolean gotItRight = false;
         boolean listen = false;
         int vid = v.getId();
@@ -103,7 +107,8 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
         }
         if (!listen) {
             if (!gotItRight) {
-                ActivityUtilities.wrongAnswerToast(this, inflater);
+//                ActivityUtilities.wrongAnswerToast(this, inflater);
+                wrongAnswerImageView.setVisibility(View.VISIBLE);
             } else {
                 ActivityUtilities.rightAnswerAlertDialog(this, correctString);
                 drawNewProblem();
@@ -114,6 +119,7 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
     void drawProblem(ArrayList<String> theData) {
         Resources res = this.getResources();
         int imageId;
+        wrongAnswerImageView.setVisibility(View.INVISIBLE);
         imageId = res.getIdentifier(theData.get(0), "drawable", this.getPackageName());
         if (theData.get(0).equals(correctString)) correctAnswer = R.id.imageButton5;
         imageButton5.setImageResource(imageId);
