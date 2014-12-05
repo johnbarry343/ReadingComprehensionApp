@@ -1,9 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:layout_alignParentRight="true"
     tools:context=".MyActivity">
 
 
@@ -11,24 +11,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:layout_marginTop="28dp"
+        android:layout_marginLeft="10dp"
         android:id="@+id/imageButton"
         android:src="@drawable/sound_icon"
         android:layout_alignParentTop="true"
+        android:layout_gravity="center"
         android:background="@android:color/transparent"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_weight="3">
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="4">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButton5"
-            android:layout_marginRight="10dp"
-            android:gravity="center"
+            android:layout_gravity="right"
             android:background="@android:color/transparent"
             />
 
@@ -36,24 +36,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButton6"
-            android:gravity="center"
+            android:layout_gravity="right"
             android:background="@android:color/transparent"
             />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_weight="3"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="4"
         >
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
             android:id="@+id/imageButton8"
-            android:gravity="center"
+            android:layout_gravity="left"
             android:background="@android:color/transparent"
             />
 
@@ -61,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButton9"
-            android:gravity="center"
+            android:layout_gravity="left"
             android:background="@android:color/transparent"
             />
     </LinearLayout>
