@@ -24,7 +24,6 @@ public class TextToPicturesActivity extends Activity implements View.OnClickList
     private ImageButton imageButtonLowerRight;
     private String correctString;
     private int correctAnswer = 0;
-
     LayoutInflater inflater;
 
     @Override
@@ -51,25 +50,38 @@ public class TextToPicturesActivity extends Activity implements View.OnClickList
     @Override
     protected void onSaveInstanceState(Bundle outState)
     {
-        outState.putInt("imageButtonUpperLeft", imageButtonUpperLeft.getId());
-        outState.putInt("imageButtonUpperRight", imageButtonUpperRight.getId());
-        outState.putInt("imageButtonLowerLeft", imageButtonLowerLeft.getId());
-        outState.putInt("imageButtonLowerRight", imageButtonLowerRight.getId());
-        outState.putString("correctAnswer", correctString);
+        outState.putInt("imageButtonUpperLeftImage", getResources().getIdentifier(data.get(0), "drawable", getPackageName()));
+        outState.putInt("imageButtonUpperRightImage", getResources().getIdentifier(data.get(1), "drawable", getPackageName()));
+        outState.putInt("imageButtonLowerLeftImage", getResources().getIdentifier(data.get(2), "drawable", getPackageName()));
+        outState.putInt("imageButtonLowerRightImage", getResources().getIdentifier(data.get(3), "drawable", getPackageName()));
+//        outState.putString("data0", data.get(0));
+//        outState.putString("data1", data.get(1));
+//        outState.putString("data2", data.get(2));
+//        outState.putString("data3", data.get(3));
+        outState.putInt("correctAnswer", correctAnswer);
+        outState.putString("correctString", correctString);
         super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState)
     {
-        int imageButtonUpperLeftId = savedInstanceState.getInt("imageButtonUpperLeft");
+        int imageButtonUpperLeftId = savedInstanceState.getInt("imageButtonUpperLeftImage");
         imageButtonUpperLeft.setImageResource(imageButtonUpperLeftId);
-        int imageButtonUpperRightId = savedInstanceState.getInt("imageButtonUpperRight");
+        int imageButtonUpperRightId = savedInstanceState.getInt("imageButtonUpperRightImage");
         imageButtonUpperRight.setImageResource(imageButtonUpperRightId);
-        int imageButtonLowerLeftId = savedInstanceState.getInt("imageButtonLowerLeft");
+        int imageButtonLowerLeftId = savedInstanceState.getInt("imageButtonLowerLeftImage");
         imageButtonLowerLeft.setImageResource(imageButtonLowerLeftId);
-        int imageButtonLowerRightId = savedInstanceState.getInt("imageButtonLowerRight");
+        int imageButtonLowerRightId = savedInstanceState.getInt("imageButtonLowerRightImage");
         imageButtonLowerRight.setImageResource(imageButtonLowerRightId);
+        correctAnswer = savedInstanceState.getInt("correctAnswer");
+        correctString = savedInstanceState.getString("correctString");
+        text.setText(correctString);
+//        data.add(savedInstanceState.getString("data0"));
+//        data.add(savedInstanceState.getString("data1"));
+//        data.add(savedInstanceState.getString("data2"));
+//        data.add(savedInstanceState.getString("data3"));
+
         super.onRestoreInstanceState(savedInstanceState);
     }
 
