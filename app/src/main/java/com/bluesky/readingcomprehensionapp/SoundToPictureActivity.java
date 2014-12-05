@@ -42,8 +42,33 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
         soundImageButton = (ImageButton) findViewById(R.id.imageButton);
         soundImageButton.setOnClickListener(this);
         inflater = getLayoutInflater();
-
         drawNewProblem();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        data.clear();
+        String aString = "";
+        CharSequence gameState[] = {"", "", "", "", ""};
+        gameState = savedInstanceState.getCharSequenceArray("gameState");
+        for (int i = 0; i < 4; i++) {
+            aString = (String) gameState[i];
+            data.add(aString);
+        }
+        correctString = (String) gameState[4];
+        drawProblem(data);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        CharSequence gameState[] = {"", "", "", "", ""};
+        for (int i = 0; i < 4; i++) {
+            gameState[i] = data.get(i);
+        }
+        gameState[4] = correctString;
+        outState.putCharSequenceArray("gameState", gameState);
     }
 
     @Override
@@ -86,6 +111,23 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
         }
     }
 
+    void drawProblem(ArrayList<String> theData) {
+        Resources res = this.getResources();
+        int imageId;
+        imageId = res.getIdentifier(theData.get(0), "drawable", this.getPackageName());
+        if (theData.get(0).equals(correctString)) correctAnswer = R.id.imageButton5;
+        imageButton5.setImageResource(imageId);
+        imageId = res.getIdentifier(theData.get(1), "drawable", this.getPackageName());
+        if (theData.get(1).equals(correctString)) correctAnswer = R.id.imageButton6;
+        imageButton6.setImageResource(imageId);
+        imageId = res.getIdentifier(theData.get(2), "drawable", this.getPackageName());
+        if (theData.get(2).equals(correctString)) correctAnswer = R.id.imageButton8;
+        imageButton8.setImageResource(imageId);
+        imageId = res.getIdentifier(theData.get(3), "drawable", this.getPackageName());
+        if (theData.get(3).equals(correctString)) correctAnswer = R.id.imageButton9;
+        imageButton9.setImageResource(imageId);
+    }
+
     void drawNewProblem() {
         Resources res = this.getResources();
         int imageId;
@@ -96,17 +138,6 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
             data.add(dataArray[i]);
         }
         Collections.shuffle(data);
-        imageId = res.getIdentifier(data.get(0), "drawable", this.getPackageName());
-        if (data.get(0).equals(correctString)) correctAnswer = R.id.imageButton5;
-        imageButton5.setImageResource(imageId);
-        imageId = res.getIdentifier(data.get(1), "drawable", this.getPackageName());
-        if (data.get(1).equals(correctString)) correctAnswer = R.id.imageButton6;
-        imageButton6.setImageResource(imageId);
-        imageId = res.getIdentifier(data.get(2), "drawable", this.getPackageName());
-        if (data.get(2).equals(correctString)) correctAnswer = R.id.imageButton8;
-        imageButton8.setImageResource(imageId);
-        imageId = res.getIdentifier(data.get(3), "drawable", this.getPackageName());
-        if (data.get(3).equals(correctString)) correctAnswer = R.id.imageButton9;
-        imageButton9.setImageResource(imageId);
+        drawProblem(data);
     }
 }
