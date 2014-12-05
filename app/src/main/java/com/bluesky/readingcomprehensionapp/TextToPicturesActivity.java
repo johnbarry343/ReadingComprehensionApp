@@ -1,7 +1,6 @@
 package com.bluesky.readingcomprehensionapp;
 
 import android.app.Activity;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +25,6 @@ public class TextToPicturesActivity extends Activity implements View.OnClickList
     private String correctString;
     private int correctAnswer = 0;
 
-    MediaPlayer mp = new MediaPlayer();
     LayoutInflater inflater;
 
     @Override
@@ -44,7 +42,35 @@ public class TextToPicturesActivity extends Activity implements View.OnClickList
         imageButtonLowerRight = (ImageButton) findViewById(R.id.imageButtonLowerRight);
         imageButtonLowerRight.setOnClickListener(this);
         inflater = getLayoutInflater();
-        drawNewProblem();
+        if (savedInstanceState == null)
+        {
+            drawNewProblem();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState)
+    {
+        outState.putInt("imageButtonUpperLeft", imageButtonUpperLeft.getId());
+        outState.putInt("imageButtonUpperRight", imageButtonUpperRight.getId());
+        outState.putInt("imageButtonLowerLeft", imageButtonLowerLeft.getId());
+        outState.putInt("imageButtonLowerRight", imageButtonLowerRight.getId());
+        outState.putString("correctAnswer", correctString);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState)
+    {
+        int imageButtonUpperLeftId = savedInstanceState.getInt("imageButtonUpperLeft");
+        imageButtonUpperLeft.setImageResource(imageButtonUpperLeftId);
+        int imageButtonUpperRightId = savedInstanceState.getInt("imageButtonUpperRight");
+        imageButtonUpperRight.setImageResource(imageButtonUpperRightId);
+        int imageButtonLowerLeftId = savedInstanceState.getInt("imageButtonLowerLeft");
+        imageButtonLowerLeft.setImageResource(imageButtonLowerLeftId);
+        int imageButtonLowerRightId = savedInstanceState.getInt("imageButtonLowerRight");
+        imageButtonLowerRight.setImageResource(imageButtonLowerRightId);
+        super.onRestoreInstanceState(savedInstanceState);
     }
 
     private String[] obtainData()
