@@ -54,10 +54,10 @@ public class TextToPicturesActivity extends Activity implements View.OnClickList
         outState.putInt("imageButtonUpperRightImage", getResources().getIdentifier(data.get(1), "drawable", getPackageName()));
         outState.putInt("imageButtonLowerLeftImage", getResources().getIdentifier(data.get(2), "drawable", getPackageName()));
         outState.putInt("imageButtonLowerRightImage", getResources().getIdentifier(data.get(3), "drawable", getPackageName()));
-//        outState.putString("data0", data.get(0));
-//        outState.putString("data1", data.get(1));
-//        outState.putString("data2", data.get(2));
-//        outState.putString("data3", data.get(3));
+        outState.putString("data0", data.get(0));
+        outState.putString("data1", data.get(1));
+        outState.putString("data2", data.get(2));
+        outState.putString("data3", data.get(3));
         outState.putInt("correctAnswer", correctAnswer);
         outState.putString("correctString", correctString);
         super.onSaveInstanceState(outState);
@@ -77,11 +77,10 @@ public class TextToPicturesActivity extends Activity implements View.OnClickList
         correctAnswer = savedInstanceState.getInt("correctAnswer");
         correctString = savedInstanceState.getString("correctString");
         text.setText(correctString);
-//        data.add(savedInstanceState.getString("data0"));
-//        data.add(savedInstanceState.getString("data1"));
-//        data.add(savedInstanceState.getString("data2"));
-//        data.add(savedInstanceState.getString("data3"));
-
+        data.add(savedInstanceState.getString("data0"));
+        data.add(savedInstanceState.getString("data1"));
+        data.add(savedInstanceState.getString("data2"));
+        data.add(savedInstanceState.getString("data3"));
         super.onRestoreInstanceState(savedInstanceState);
     }
 
