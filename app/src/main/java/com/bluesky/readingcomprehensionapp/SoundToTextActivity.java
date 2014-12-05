@@ -194,7 +194,7 @@ public class SoundToTextActivity extends Activity implements View.OnClickListene
 
         if (!listen) {
             if (!gotItRight) {
-                ActivityUtilities.wrongTopLeft(this, inflater);
+             //   ActivityUtilities.wrongTopLeft(this, inflater);
             } else {
                 //THUMBS UP
                 drawNewProblem();
