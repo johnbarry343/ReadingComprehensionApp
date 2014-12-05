@@ -20,8 +20,8 @@
             android:layout_weight="1"
             android:scaleType="fitStart"
             android:layout_gravity="left"
-            android:src="@drawable/wrong_answer_toast_icon"
             android:visibility="invisible"
+            android:src="@drawable/wrong_answer_toast_icon"
             android:id="@+id/imageView"/>
 
         <ImageButton
