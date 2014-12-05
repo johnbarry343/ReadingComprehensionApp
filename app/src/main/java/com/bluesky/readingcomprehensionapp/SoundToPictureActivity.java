@@ -52,7 +52,7 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
         String aString = "";
         CharSequence gameState[] = {"", "", "", "", ""};
         gameState = savedInstanceState.getCharSequenceArray("gameState");
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++)  {
             aString = (String) gameState[i];
             data.add(aString);
         }
