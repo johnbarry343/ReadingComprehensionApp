@@ -3,21 +3,20 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:orientation="vertical"
-              android:gravity="center_vertical">
+              android:gravity="center">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center">
+        android:gravity="center|bottom">
 
         <Button
             android:id="@+id/pictureToText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="bottom"
             android:drawableTop="@drawable/test"
             android:textColor="#EDFF99"
             android:src="@drawable/picture_to_words"
@@ -29,7 +28,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="bottom"
             android:drawableTop="@drawable/words_to_picture"
             android:textColor="#EDFF99"
             android:textStyle="bold"
@@ -48,7 +46,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="top"
             android:drawableTop="@drawable/sound_to_picture"
             android:textColor="#EDFF99"
             android:textStyle="bold"
@@ -56,7 +53,6 @@
 
         <Button
             android:id="@+id/soundToText"
-            android:gravity="top"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
