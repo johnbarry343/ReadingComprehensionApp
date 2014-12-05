@@ -10,21 +10,25 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom">
+        android:layout_marginTop="40dp"
+        android:gravity="left">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:scaleType="fitStart"
+            android:layout_gravity="left"
             android:src="@drawable/wrong_answer_toast_icon"
+            android:visibility="invisible"
             android:id="@+id/imageView"/>
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:layout_marginTop="28dp"
+            android:layout_weight="20"
             android:id="@+id/imageButton"
+            android:scaleType="fitStart"
             android:src="@drawable/sound_icon"
             android:layout_alignParentTop="true"
             android:background="@android:color/transparent"/>
@@ -33,14 +37,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="bottom|center_horizontal"
         android:layout_weight="3">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButton5"
-            android:gravity="center"
+            android:gravity="bottom"
             android:background="@android:color/transparent"
             />
 
@@ -48,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButton6"
-            android:gravity="center"
+            android:gravity="bottom"
             android:background="@android:color/transparent"
             />
     </LinearLayout>
@@ -56,7 +60,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:gravity="top|center_horizontal"
         android:layout_weight="3"
         >
 
@@ -64,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButton8"
-            android:gravity="center"
+            android:gravity="top"
             android:background="@android:color/transparent"
             />
 
@@ -72,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButton9"
-            android:gravity="center"
+            android:gravity="top"
             android:background="@android:color/transparent"
             />
     </LinearLayout>
