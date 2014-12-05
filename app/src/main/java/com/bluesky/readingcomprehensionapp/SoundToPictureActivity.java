@@ -89,6 +89,7 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
     void drawNewProblem() {
         Resources res = this.getResources();
         int imageId;
+        data.clear();
         String[] dataArray = DatabaseHelper.getInstance(getApplicationContext()).getData(1);
         correctString = dataArray[0];
         for (int i = 0; i < 4; i++) {
@@ -107,6 +108,5 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
         imageId = res.getIdentifier(data.get(3), "drawable", this.getPackageName());
         if (data.get(3).equals(correctString)) correctAnswer = R.id.imageButton9;
         imageButton9.setImageResource(imageId);
-
     }
 }

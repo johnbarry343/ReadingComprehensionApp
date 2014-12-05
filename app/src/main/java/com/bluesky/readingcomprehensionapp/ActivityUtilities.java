@@ -39,6 +39,8 @@ public class ActivityUtilities {
         dialog.show();
     }
 
+    static void lookUpImageId(){
 
+    }
 
 }

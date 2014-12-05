@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     private SQLiteDatabase db;
     private static SQLiteCursor constantsCursor;
 
-    private static final ArrayList<String> data = new ArrayList<String>();
+    private ArrayList<String> data = new ArrayList<String>();
 
 
     public static DatabaseHelper getInstance(Context ctx)
@@ -93,6 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
      */
     public String[] getData(int level)
     {
+        data.clear();
         constantsCursor = (SQLiteCursor) getReadableDatabase().rawQuery("SELECT " + WORD + " FROM " + TABLE + " WHERE " + LEVEL + " = " + Integer.toString(level), null);
         constantsCursor.moveToFirst();
 
