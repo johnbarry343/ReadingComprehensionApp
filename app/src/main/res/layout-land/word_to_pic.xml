@@ -6,15 +6,32 @@
               android:layout_alignParentRight="true"
               tools:context=".MyActivity">
 
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text"
-        android:layout_alignParentTop="true"
-        android:layout_weight="2"
-        android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
-        android:textSize="62sp"/>
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="20dp"
+        android:gravity="left">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="fitStart"
+            android:layout_gravity="left"
+            android:src="@drawable/wrong_answer_toast_icon"
+            android:visibility="invisible"
+            android:id="@+id/imageView"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text"
+            android:layout_alignParentTop="true"
+            android:layout_weight="20"
+            android:scaleType="fitStart"
+            android:textSize="62sp"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
