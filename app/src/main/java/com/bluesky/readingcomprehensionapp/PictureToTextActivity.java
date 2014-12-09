@@ -1,7 +1,6 @@
 package com.bluesky.readingcomprehensionapp;
 
 import android.app.Activity;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +14,12 @@ import java.util.Collections;
  */
 public class PictureToTextActivity extends Activity implements View.OnClickListener {
 
-    private ImageView Image;
+    private ImageView image;
     private int correctAnswer = 0;
-    private Button Button1;
-    private Button Button2;
-    private Button Button3;
-    private Button Button4;
+    private Button button1;
+    private Button button2;
+    private Button button3;
+    private Button button4;
     LayoutInflater inflater;
 
 
@@ -31,15 +30,15 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.pic_to_word);
-        Image = (ImageView) findViewById(R.id.Image);
-        Button1 = (Button) findViewById(R.id.Button1);
-        Button1.setOnClickListener(this);
-        Button2 = (Button) findViewById(R.id.Button2);
-        Button3.setOnClickListener(this);
-        Button3 = (Button) findViewById(R.id.Button3);
-        Button3.setOnClickListener(this);
-        Button4 = (Button) findViewById(R.id.Button4);
-        Button4.setOnClickListener(this);
+        image = (ImageView) findViewById(R.id.Image);
+        button1 = (Button) findViewById(R.id.Button1);
+        button1.setOnClickListener(this);
+        button2 = (Button) findViewById(R.id.Button2);
+        button2.setOnClickListener(this);
+        button3 = (Button) findViewById(R.id.Button3);
+        button3.setOnClickListener(this);
+        button4 = (Button) findViewById(R.id.Button4);
+        button4.setOnClickListener(this);
         inflater = getLayoutInflater();
 
         drawNewProblem();
@@ -68,16 +67,16 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
 
 
         String button1Id = savedInstanceState.getString("button1");
-        Button1.setText(button1Id);
+        button1.setText(button1Id);
 
         String button2Id = savedInstanceState.getString("button2");
-        Button2.setText(button2Id);
+        button2.setText(button2Id);
 
         String button3Id = savedInstanceState.getString("button3");
-        Button3.setText(button3Id);
+        button3.setText(button3Id);
 
         String button4Id = savedInstanceState.getString("button4");
-        Button4.setText(button4Id);
+        button4.setText(button4Id);
 
 
         correctAnswer = savedInstanceState.getInt("correctAnswer");
@@ -114,7 +113,7 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
 
 
 
-        Button1.setText(data.get(0));
+        button1.setText(data.get(0));
 
         imageId = getResources().getIdentifier(data.get(0), "drawable", getPackageName());
         if (data.get(0).equals(correctString))
@@ -123,19 +122,19 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
 
         }
 
-        Button2.setText(data.get(1));
+        button2.setText(data.get(1));
         imageId = getResources().getIdentifier(data.get(1), "drawable", getPackageName());
         if (data.get(1).equals(correctString))
         {
             correctAnswer = R.id.buttonTwo;
         }
-        Button3.setText(data.get(2));
+        button3.setText(data.get(2));
         imageId = getResources().getIdentifier(data.get(2), "drawable", getPackageName());
         if (data.get(2).equals(correctString))
         {
             correctAnswer = R.id.buttonThree  ;
         }
-        Button4.setText(data.get(3));
+        button4.setText(data.get(3));
         imageId = getResources().getIdentifier(data.get(3), "drawable", getPackageName());
         if (data.get(3).equals(correctString))
         {
