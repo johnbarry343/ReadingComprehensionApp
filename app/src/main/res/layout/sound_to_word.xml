@@ -10,7 +10,17 @@
     android:gravity="center"
     android:background="#000"
     tools:context=".MyActivity">
-
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scaleType="fitStart"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/wrong_answer_toast_icon"
+        android:visibility="invisible"
+        android:id="@+id/imageView"/>
 
 
 
@@ -21,7 +31,6 @@
         android:id="@+id/imageButton"
         android:layout_alignParentTop="true"
         android:layout_weight="4"
-
         android:src="@drawable/sound_icon"
         android:background="@android:color/transparent"
         android:layout_marginTop="28dp" />

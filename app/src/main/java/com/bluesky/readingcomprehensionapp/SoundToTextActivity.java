@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,6 +34,8 @@ public class SoundToTextActivity extends Activity implements View.OnClickListene
     private String correct;
     MediaPlayer mp = new MediaPlayer();
     LayoutInflater inflater;
+    ImageView wrongAnswerImageView;
+    boolean gotItRight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,6 +54,7 @@ public class SoundToTextActivity extends Activity implements View.OnClickListene
         buttonFour = (Button) findViewById(R.id.buttonFour);
         buttonFour.setOnClickListener(this);
         inflater = getLayoutInflater();
+        wrongAnswerImageView = (ImageView) findViewById(R.id.imageView);
         drawNewProblem();
     }
     @Override
@@ -64,6 +68,7 @@ public class SoundToTextActivity extends Activity implements View.OnClickListene
         //  outState.putInt("buttonTwo", getResources().getIdentifier(data.get(1), "string", getPackageName()));
         //outState.putInt("buttonThree", getResources().getIdentifier(data.get(2), "string", getPackageName()));
         //outState.putInt("buttonFour", getResources().getIdentifier(data.get(3), "string", getPackageName()));
+        outState.putInt(" gotItRight", wrongAnswerImageView.getVisibility());
        outState.putString("data0", data.get(0));
       outState.putString("data1", data.get(1));
       outState.putString("data2", data.get(2));
@@ -89,7 +94,14 @@ public class SoundToTextActivity extends Activity implements View.OnClickListene
 
         String buttonFourId = savedInstanceState.getString("buttonFour");
         buttonFour.setText(buttonFourId);
-
+        if (savedInstanceState.getInt("gotItRight") == View.VISIBLE)
+        {
+            wrongAnswerImageView.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            wrongAnswerImageView.setVisibility(View.INVISIBLE);
+        }
 
         correctAnswer = savedInstanceState.getInt("correctAnswer");
 
@@ -163,7 +175,7 @@ public class SoundToTextActivity extends Activity implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        boolean gotItRight = false;
+        gotItRight = false;
         boolean listen = false;
         int vid = v.getId();
         switch (vid) {
@@ -194,9 +206,10 @@ public class SoundToTextActivity extends Activity implements View.OnClickListene
 
         if (!listen) {
             if (!gotItRight) {
-             // ActivityUtilities.wrongTopLeft(this, inflater);
+                wrongAnswerImageView.setVisibility(View.VISIBLE);
             } else {
-                //THUMBS UP
+                wrongAnswerImageView.setVisibility(View.GONE);
+                ActivityUtilities.rightAnswerAlertDialog(this, correctString);
                 drawNewProblem();
             }
         }
