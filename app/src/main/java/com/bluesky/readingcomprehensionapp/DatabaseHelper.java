@@ -46,6 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
         db.execSQL("CREATE TABLE " + TABLE + " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + WORD + " TEXT, " + LEVEL + " INTEGER);");
         db.execSQL("INSERT INTO " + TABLE + " SELECT NULL AS _id, 'ball' AS word, 1 AS level\n" +
+                "UNION SELECT NULL, 'ball', 1\n" +
                 "UNION SELECT NULL, 'bear', 1\n" +
                 "UNION SELECT NULL, 'bee', 1\n" +
                 "UNION SELECT NULL, 'book', 1\n" +

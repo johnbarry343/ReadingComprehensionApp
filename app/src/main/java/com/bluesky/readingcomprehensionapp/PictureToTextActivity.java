@@ -1,6 +1,8 @@
 package com.bluesky.readingcomprehensionapp;
 
 import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,15 +24,15 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
     private Button button4;
     LayoutInflater inflater;
 
-
+    boolean gotItRight;
     String correctString = "";
     ArrayList<String> data = new ArrayList<String>();
-
+    ImageView wrongAnswerImageView;
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.pic_to_word);
-        image = (ImageView) findViewById(R.id.Image);
+        image = (ImageView) findViewById(R.id.image);
         button1 = (Button) findViewById(R.id.Button1);
         button1.setOnClickListener(this);
         button2 = (Button) findViewById(R.id.Button2);
@@ -39,6 +41,7 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
         button3.setOnClickListener(this);
         button4 = (Button) findViewById(R.id.Button4);
         button4.setOnClickListener(this);
+        wrongAnswerImageView = (ImageView) findViewById(R.id.imageView);
         inflater = getLayoutInflater();
 
         drawNewProblem();
@@ -56,7 +59,7 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
         outState.putString("data1", data.get(1));
         outState.putString("data2", data.get(2));
         outState.putString("data3", data.get(3));
-
+       outState.putInt(" gotItRight", wrongAnswerImageView.getVisibility());
         outState.putInt("correctAnswer", correctAnswer);
         outState.putString("correctString", correctString);
         super.onSaveInstanceState(outState);
@@ -65,7 +68,14 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
 
-
+       if (savedInstanceState.getInt("gotItRight") == View.VISIBLE)
+        {
+            wrongAnswerImageView.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            wrongAnswerImageView.setVisibility(View.INVISIBLE);
+        }
         String button1Id = savedInstanceState.getString("button1");
         button1.setText(button1Id);
 
@@ -98,27 +108,26 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
 
     void drawNewProblem()
     {
-        int imageId;
+
         data.clear();
+
         String[] dataArray = DatabaseHelper.getInstance(getApplicationContext()).getData(1);
+        Resources res = getResources();
+        String mDrawableName = dataArray[0];
+        int imageId = res.getIdentifier(mDrawableName , "drawable", getPackageName());
+        Drawable drawable = res.getDrawable(imageId);
+        image.setImageDrawable(drawable );
         correctString = dataArray[0];
-
-
-
         for (int i = 0; i < 4; i++)
         {
             data.add(dataArray[i]);
         }
         Collections.shuffle(data);
-
-
-
         button1.setText(data.get(0));
-
-        imageId = getResources().getIdentifier(data.get(0), "drawable", getPackageName());
+       imageId = getResources().getIdentifier(data.get(0), "drawable", getPackageName());
         if (data.get(0).equals(correctString))
         {
-            correctAnswer = R.id.buttonOne;
+            correctAnswer = R.id.Button1;
 
         }
 
@@ -126,19 +135,19 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
         imageId = getResources().getIdentifier(data.get(1), "drawable", getPackageName());
         if (data.get(1).equals(correctString))
         {
-            correctAnswer = R.id.buttonTwo;
+            correctAnswer = R.id.Button2;
         }
         button3.setText(data.get(2));
         imageId = getResources().getIdentifier(data.get(2), "drawable", getPackageName());
         if (data.get(2).equals(correctString))
         {
-            correctAnswer = R.id.buttonThree  ;
+            correctAnswer = R.id.Button3  ;
         }
         button4.setText(data.get(3));
         imageId = getResources().getIdentifier(data.get(3), "drawable", getPackageName());
         if (data.get(3).equals(correctString))
         {
-            correctAnswer = R.id.buttonFour;
+            correctAnswer = R.id.Button4;
         }
 
         int correctId = this.getResources().getIdentifier(correctString, "raw", this.getPackageName());
@@ -148,7 +157,7 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        boolean gotItRight = false;
+        gotItRight = false;
         boolean listen = false;
         int vid = v.getId();
         switch (vid){
@@ -170,8 +179,9 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
         }
             if (!listen){
                 if (!gotItRight){
-                    ActivityUtilities.wrongAnswerToast(this, inflater);
+                    wrongAnswerImageView.setVisibility(View.VISIBLE);
                 }else{
+                    wrongAnswerImageView.setVisibility(View.GONE);
                     ActivityUtilities.rightAnswerAlertDialog(this, correctString);
                     drawNewProblem();
                 }
