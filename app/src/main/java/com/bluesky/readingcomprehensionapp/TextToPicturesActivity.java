@@ -169,6 +169,8 @@ public class TextToPicturesActivity extends Activity implements View.OnClickList
             if (!gotItRight) {
                 wrongAnswerImageView.setVisibility(View.VISIBLE);
             } else {
+                wrongAnswerImageView.setVisibility(View.GONE);
+                ActivityUtilities.rightAnswerAlertDialog(this, correctString);
                 drawNewProblem();
             }
         }
