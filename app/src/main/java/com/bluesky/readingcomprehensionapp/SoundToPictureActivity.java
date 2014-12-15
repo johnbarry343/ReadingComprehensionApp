@@ -51,7 +51,7 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        data.clear();
+      /*  data.clear();
         String aString = "";
         CharSequence gameState[] = {"", "", "", "", ""};
         gameState = savedInstanceState.getCharSequenceArray("gameState");
@@ -60,18 +60,57 @@ public class SoundToPictureActivity extends Activity implements View.OnClickList
             data.add(aString);
         }
         correctString = (String) gameState[4];
-        drawProblem(data);
+        drawProblem(data);*/
+        if (savedInstanceState.getInt("isWrongAnswerGiven") == View.VISIBLE)
+        {
+            wrongAnswerImageView.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            wrongAnswerImageView.setVisibility(View.INVISIBLE);
+        }
+        int imageButtonUpperLeftId = savedInstanceState.getInt("imageButtonUpperLeftImage");
+        imageButton5.setImageResource(imageButtonUpperLeftId);
+        int imageButtonUpperRightId = savedInstanceState.getInt("imageButtonUpperRightImage");
+        imageButton6.setImageResource(imageButtonUpperRightId);
+        int imageButtonLowerLeftId = savedInstanceState.getInt("imageButtonLowerLeftImage");
+        imageButton8.setImageResource(imageButtonLowerLeftId);
+        int imageButtonLowerRightId = savedInstanceState.getInt("imageButtonLowerRightImage");
+        imageButton9.setImageResource(imageButtonLowerRightId);
+        int  soundImageButtonID = savedInstanceState.getInt("soundImageButtonID");
+        soundImageButton.setImageResource(soundImageButtonID);
+
+        correctAnswer = savedInstanceState.getInt("correctAnswer");
+        correctString = savedInstanceState.getString("correctString");
+       // text.setText(correctString);
+        data.add(savedInstanceState.getString("data0"));
+        data.add(savedInstanceState.getString("data1"));
+        data.add(savedInstanceState.getString("data2"));
+        data.add(savedInstanceState.getString("data3"));
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        CharSequence gameState[] = {"", "", "", "", ""};
+       /* CharSequence gameState[] = {"", "", "", "", ""};
         for (int i = 0; i < 4; i++) {
             gameState[i] = data.get(i);
         }
         gameState[4] = correctString;
-        outState.putCharSequenceArray("gameState", gameState);
+        outState.putCharSequenceArray("gameState", gameState);*/
+
+        outState.putInt("imageButtonUpperLeftImage", getResources().getIdentifier(data.get(0), "drawable", getPackageName()));
+        outState.putInt("imageButtonUpperRightImage", getResources().getIdentifier(data.get(1), "drawable", getPackageName()));
+        outState.putInt("imageButtonLowerLeftImage", getResources().getIdentifier(data.get(2), "drawable", getPackageName()));
+        outState.putInt("imageButtonLowerRightImage", getResources().getIdentifier(data.get(3), "drawable", getPackageName()));
+       outState.putInt("soundImageButton",getResources().getIdentifier(correctString, "raw", this.getPackageName()));
+        outState.putString("data0", data.get(0));
+        outState.putString("data1", data.get(1));
+        outState.putString("data2", data.get(2));
+        outState.putString("data3", data.get(3));
+        outState.putInt("correctAnswer", correctAnswer);
+        outState.putString("correctString", correctString);
+        outState.putInt("isWrongAnswerGiven", wrongAnswerImageView.getVisibility());
     }
 
     @Override

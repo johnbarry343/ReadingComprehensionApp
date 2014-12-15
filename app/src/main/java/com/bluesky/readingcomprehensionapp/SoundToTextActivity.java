@@ -35,7 +35,7 @@ public class SoundToTextActivity extends Activity implements View.OnClickListene
     MediaPlayer mp = new MediaPlayer();
     LayoutInflater inflater;
     ImageView wrongAnswerImageView;
-    boolean gotItRight;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -64,11 +64,12 @@ public class SoundToTextActivity extends Activity implements View.OnClickListene
         outState.putString("buttonTwo", data.get(1));
         outState.putString("buttonThree", data.get(2));
         outState.putString("buttonFour", data.get(3));
+        outState.putInt("soundImageButton",getResources().getIdentifier(correctString, "raw", this.getPackageName()));
        // outState.putInt("correctId", this.getResources().getIdentifier(correctString, "raw", this.getPackageName()));
         //  outState.putInt("buttonTwo", getResources().getIdentifier(data.get(1), "string", getPackageName()));
         //outState.putInt("buttonThree", getResources().getIdentifier(data.get(2), "string", getPackageName()));
         //outState.putInt("buttonFour", getResources().getIdentifier(data.get(3), "string", getPackageName()));
-        outState.putInt(" gotItRight", wrongAnswerImageView.getVisibility());
+        outState.putInt("isWrongAnswerGiven", wrongAnswerImageView.getVisibility());
        outState.putString("data0", data.get(0));
       outState.putString("data1", data.get(1));
       outState.putString("data2", data.get(2));
@@ -94,7 +95,7 @@ public class SoundToTextActivity extends Activity implements View.OnClickListene
 
         String buttonFourId = savedInstanceState.getString("buttonFour");
         buttonFour.setText(buttonFourId);
-        if (savedInstanceState.getInt("gotItRight") == View.VISIBLE)
+        if (savedInstanceState.getInt("isWrongAnswerGiven") == View.VISIBLE)
         {
             wrongAnswerImageView.setVisibility(View.VISIBLE);
         }
@@ -107,8 +108,8 @@ public class SoundToTextActivity extends Activity implements View.OnClickListene
 
       //  correctId = savedInstanceState.getInt("correctId");
         correctString = savedInstanceState.getString("correctString");
-
-
+        int  soundImageButtonID = savedInstanceState.getInt("soundImageButtonID");
+        imageButton.setImageResource(soundImageButtonID);
      data.add(savedInstanceState.getString("data0"));
         data.add(savedInstanceState.getString("data1"));
         data.add(savedInstanceState.getString("data2"));
@@ -175,7 +176,7 @@ public class SoundToTextActivity extends Activity implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        gotItRight = false;
+      boolean gotItRight = false;
         boolean listen = false;
         int vid = v.getId();
         switch (vid) {

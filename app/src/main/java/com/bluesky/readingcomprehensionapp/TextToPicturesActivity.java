@@ -66,7 +66,6 @@ public class TextToPicturesActivity extends Activity implements View.OnClickList
         outState.putInt("isWrongAnswerGiven", wrongAnswerImageView.getVisibility());
         super.onSaveInstanceState(outState);
     }
-
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState)
     {

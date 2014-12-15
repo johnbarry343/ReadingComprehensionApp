@@ -24,14 +24,15 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
     private Button button4;
     LayoutInflater inflater;
 
-    boolean gotItRight;
+    //boolean gotItRight=false;
     String correctString = "";
     ArrayList<String> data = new ArrayList<String>();
     ImageView wrongAnswerImageView;
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
-        setContentView(R.layout.pic_to_word);
+
+                setContentView(R.layout.pic_to_word);
         image = (ImageView) findViewById(R.id.image);
         button1 = (Button) findViewById(R.id.Button1);
         button1.setOnClickListener(this);
@@ -51,7 +52,13 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
     @Override
     protected void onSaveInstanceState(Bundle outState)
     {
-        outState.putString("button1", data.get(0));
+      /*  outState.putInt("button1",getResources().getIdentifier(data.get(0),"drawable", getPackageName()));
+        outState.putInt("button2",getResources().getIdentifier(data.get(1),"drawable", getPackageName()));
+        outState.putInt("button3",getResources().getIdentifier(data.get(2),"drawable", getPackageName()));
+        outState.putInt("button4",getResources().getIdentifier(data.get(3),"drawable", getPackageName()));
+       outState.putInt("image",getResources().getIdentifier(correctString,"drawable",getPackageName()));*/
+        outState.putInt("image",getResources().getIdentifier(correctString,"drawable",getPackageName()));
+    outState.putString("button1", data.get(0));
         outState.putString("button2", data.get(1));
         outState.putString("button3", data.get(2));
         outState.putString("button4", data.get(3));
@@ -59,16 +66,19 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
         outState.putString("data1", data.get(1));
         outState.putString("data2", data.get(2));
         outState.putString("data3", data.get(3));
-       outState.putInt(" gotItRight", wrongAnswerImageView.getVisibility());
+        outState.putInt("isWrongAnswerGiven", wrongAnswerImageView.getVisibility());
         outState.putInt("correctAnswer", correctAnswer);
         outState.putString("correctString", correctString);
+       // outState.putBoolean("gotItRight",);
+
         super.onSaveInstanceState(outState);
+
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
 
-       if (savedInstanceState.getInt("gotItRight") == View.VISIBLE)
+        if (savedInstanceState.getInt("isWrongAnswerGiven") == View.VISIBLE)
         {
             wrongAnswerImageView.setVisibility(View.VISIBLE);
         }
@@ -76,6 +86,8 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
         {
             wrongAnswerImageView.setVisibility(View.INVISIBLE);
         }
+        int imageId = savedInstanceState.getInt("image");
+        image.setImageResource(imageId);
         String button1Id = savedInstanceState.getString("button1");
         button1.setText(button1Id);
 
@@ -88,7 +100,14 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
         String button4Id = savedInstanceState.getString("button4");
         button4.setText(button4Id);
 
-
+      /*  int button1Id = savedInstanceState.getInt("button1");
+        button1.setId(button1Id);
+        int button2Id = savedInstanceState.getInt("button2");
+        button1.setId(button2Id);
+        int button3Id = savedInstanceState.getInt("button3");
+        button1.setId(button3Id);
+        int button4Id = savedInstanceState.getInt("button4");
+        button1.setId(button4Id);*/
         correctAnswer = savedInstanceState.getInt("correctAnswer");
         correctString = savedInstanceState.getString("correctString");
 
@@ -96,7 +115,7 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
         data.add(savedInstanceState.getString("data1"));
         data.add(savedInstanceState.getString("data2"));
         data.add(savedInstanceState.getString("data3"));
-
+       // gotItRight = savedInstanceState.getBoolean("gotItRight");
         super.onRestoreInstanceState(savedInstanceState);
 
     }
@@ -157,7 +176,7 @@ public class PictureToTextActivity extends Activity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        gotItRight = false;
+        boolean gotItRight = false;
         boolean listen = false;
         int vid = v.getId();
         switch (vid){
